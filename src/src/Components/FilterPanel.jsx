@@ -5,10 +5,11 @@ import "react-calendar/dist/Calendar.css";
 
 /**
  * Renders the filter panel which allows for filtering
- * @param {Array} flights
+ * @param {Object} filters
  * @param {Function} onFilterChange
+ * @param {Array} flights
  */
-const FilterPanel = ({ flights, onFilterChange }) => {
+const FilterPanel = ({ filters, onFilterChange, flights }) => {
   // Unique values for filters
   const [uniqueValues, setUniqueValues] = useState({
     operator: [],
@@ -17,17 +18,8 @@ const FilterPanel = ({ flights, onFilterChange }) => {
     planeRegistration: [],
   });
 
-  // Current selected filters
-  const [filters, setFilters] = useState({
-    operator: null,
-    flightContext: null,
-    planeType: null,
-    planeRegistration: null,
-    date: null,
-  });
-
   /**
-   *
+   * Generates the options for the select component.
    */
   const generateOptions = (items) =>
     items.map((item) => ({ label: item, value: item }));
@@ -52,7 +44,6 @@ const FilterPanel = ({ flights, onFilterChange }) => {
   const handleFilterChange = (filterKey, selectedValue) => {
     const updatedFilters = { ...filters, [filterKey]: selectedValue };
     onFilterChange(updatedFilters);
-    setFilters(updatedFilters);
   };
 
   /**
@@ -62,7 +53,6 @@ const FilterPanel = ({ flights, onFilterChange }) => {
   const clearDate = () => {
     const updatedFilters = { ...filters, date: null };
     onFilterChange(updatedFilters);
-    setFilters(updatedFilters);
   };
 
   useEffect(() => {

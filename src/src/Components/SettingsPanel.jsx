@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 /**
  * An array of available imagery for the map.
@@ -49,29 +49,36 @@ const availableImagery = [
 /**
  * The user settings panel contains parameters that can be
  * changed by the user such as map style and visibility settings.
+ * @param {Object} settings - Settings to be rendered
  * @param {Function} onSettingsChange - A callback invoked when a setting changes
  */
-const SettingsPanel = ({ onSettingsChange }) => {
-  // Default settings
-  const [settings, setSettings] = useState({
-    imageryURL: "mapbox://styles/mapbox/streets-v12",
-    lineOpacity: 1,
-    lineWidth: 1.5,
-    mapKey: null,
-  });
+const SettingsPanel = ({ settings, onSettingsChange }) => {
+  useEffect(() => {
+    const savedSettings = localStorage.getItem(
+      "pilot-alex-flight-tracker-settings"
+    );
+
+    if (savedSettings !== null) {
+      onSettingsChange(JSON.parse(savedSettings));
+    }
+  }, []);
 
   /**
    * Overwrites the previous settings with ``newSettings``.
-   * The component ``onSettingsChange`` is called.
+   * The callback ``onSettingsChange`` is called.
    */
   const updateSettings = (newSettings) => {
-    setSettings((prevSettings) => {
+    onSettingsChange((prevSettings) => {
       const updatedSettings = {
         ...prevSettings,
         ...newSettings,
       };
 
-      onSettingsChange(updatedSettings);
+      localStorage.setItem(
+        "pilot-alex-flight-tracker-settings",
+        JSON.stringify(updatedSettings)
+      );
+
       return updatedSettings;
     });
   };
@@ -107,7 +114,7 @@ const SettingsPanel = ({ onSettingsChange }) => {
               min={0.1}
               max={1.0}
               step={0.1}
-              defaultValue={settings.lineOpacity}
+              value={settings.lineOpacity}
               onChange={(event) =>
                 updateSettings({ lineOpacity: parseFloat(event.target.value) })
               }
@@ -119,7 +126,7 @@ const SettingsPanel = ({ onSettingsChange }) => {
               min={1.0}
               max={10.0}
               step={1.0}
-              defaultValue={settings.lineWidth}
+              value={settings.lineWidth}
               onChange={(event) =>
                 updateSettings({ lineWidth: parseFloat(event.target.value) })
               }
@@ -136,6 +143,7 @@ const SettingsPanel = ({ onSettingsChange }) => {
               placeholder="Mapbox API key"
               min={0}
               max={200}
+              value={settings.mapKey === null ? "" : settings.mapKey}
               onChange={(event) =>
                 updateSettings({ mapKey: event.target.value })
               }
