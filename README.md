@@ -4,7 +4,7 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/alexandreaero/flight-tracker)
 ![Lines of code](https://img.shields.io/tokei/lines/github/alexandreaero/flight-tracker)
 
-### A flight tracker developed to archive flights for OSINT
+### A flight tracker developed to archive flights for OSINT or visualisation
 
 ## Screenshots
 ![image](https://github.com/AlexandreAero/flight-tracker/assets/66020831/4528eced-8fae-4597-9b16-7e0ca708f0ac)
