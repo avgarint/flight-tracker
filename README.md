@@ -1,15 +1,12 @@
-<h1 align="center">flight-tracker</h1>
+# flight-tracker
 
-![GitHub last commit](https://img.shields.io/github/last-commit/alexandreaero/flight-tracker)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/alexandreaero/flight-tracker)
-![Lines of code](https://img.shields.io/tokei/lines/github/alexandreaero/flight-tracker)
+A flight tracker developed to archive flights for OSINT or visualisation.
 
-### A flight tracker developed to archive flights for OSINT or visualisation
+<p align="center">
+        <img src="https://github.com/AlexandreAero/flight-tracker/assets/66020831/4528eced-8fae-4597-9b16-7e0ca708f0ac" width="738px" />
+</p>
 
-## Screenshots
-![image](https://github.com/AlexandreAero/flight-tracker/assets/66020831/4528eced-8fae-4597-9b16-7e0ca708f0ac)
-
-## Used librairies
+## Libraries
 - ``mapbox-gl``: [npm](https://www.npmjs.com/package/mapbox-gl) or [Github repository](https://github.com/mapbox/mapbox-gl-js)
 - ``react``: [npm](https://www.npmjs.com/package/react) or [Github repository](https://github.com/facebook/react)
 - ``react-calendar``: [npm](https://www.npmjs.com/package/react-calendar) or [Github repository](https://github.com/wojtekmaj/react-calendar)
