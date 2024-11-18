@@ -1,6 +1,6 @@
 # flight-tracker
 
-A flight tracker developed to archive flights for OSINT or visualisation.
+A flight tracker developed to archive flights for OSINT or data visualisation.
 
 <p align="center">
         <img src="https://github.com/AlexandreAero/flight-tracker/assets/66020831/4528eced-8fae-4597-9b16-7e0ca708f0ac" width="738px" />
